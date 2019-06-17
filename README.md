@@ -1,4 +1,4 @@
-# HYP's Events Component
+# HYP's Events Component ~ WHAT IS HYP?
 
 **HYP** is the prototype of a web app that aims to improve communication between students and school..
 
@@ -9,13 +9,12 @@ In this documentation I will illustrate the realization of the **events page** .
 
 #
 
-## USED TECHNOLOGY
+## HOW DOES HYP WORKS?
 
 For the development of this project it was decided to use **[REACT](https://reactjs.org/)** for the frontend part and **[STRAPI](https://strapi.io/documentation/3.0.0-beta.x/)** for the backend part.
 
 In the Events page we get the API from the dashboard in the school hall. 
 The dasboard is build in WordPress. All we needed is to build the request to the [REST API](https://developer.wordpress.org/rest-api/).
-#
 
 ## START 
 
@@ -26,22 +25,42 @@ The dasboard is build in WordPress. All we needed is to build the request to the
 
 ### Find your WordPress API
 
-You can find your JSON adding `wp-json/wp/v2/posts/` at your website' URL
+You can find your JSON adding `wp-json/wp/v2/posts/` at your website' URL.
 
+### Fetch the JSON in the Component
 
+That's what your constactor need to be
 
-Once you have downloaded this Git, insert the **Login.jsx** and **Login.scss** files into the React folder inside src and then overwrite the **index.js** file.
+```js
+constructor() {
+    super();
+    this.state = {
+      loading: true,
+      posts: [],
+      media: [],
+      calendar: [],
+      categories: []
+    };
 
-![folder](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/folder.png)
-
-To make sure that everything works we still need to make **two changes**
-
-* Enter the ** Strapi ** backend and enter **Roles and Permission**> **Authenticated**> scroll the page, open the **Users Permission** curtain and enter the following fields in the Auth field.<br/>
-  ![role](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/role.png)<br/> > ![Auth](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/authenticated.png) > ![User](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/userPermission.png) and checked the field ![Check](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/check.png)
-
-* As a second step you need to replace the url with that of your database created in strapi (with ctrl + F look for the following word '[InsertUrlStrapi]').
-
-
-**Once all these steps are done, everything will be ready. (Inside the file you will find comments explaining the functions)**
-
-#### ENJOY YOURSELF!!!
+    Promise.all([
+      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/posts/").then(
+        data => data.json()
+      ),
+      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/media/").then(
+        media => media.json()
+      ),
+      fetch("https://moholepeople.it/dashboard/wp-json/acf/v3/posts").then(
+        data => data.json()
+      )
+    ]).then(([posts, media, calendar, categories]) => {
+      this.setState({
+        posts,
+        media,
+        calendar,
+        categories,
+        loading: false
+      });
+      console.log(this.state);
+    });
+  }
+```
