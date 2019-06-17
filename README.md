@@ -13,10 +13,10 @@ In this documentation I will illustrate the realization of the **events page** .
 
 For the development of this project it was decided to use **[REACT](https://reactjs.org/)** for the frontend part and **[STRAPI](https://strapi.io/documentation/3.0.0-beta.x/)** for the backend part.
 
-In the Events page we get the API from the dashboard in the school hall. 
+In the Events page we get the API from the dashboard in the school hall.
 The dasboard is build in WordPress. All we needed is to build the request to the [REST API](https://developer.wordpress.org/rest-api/).
 
-## START 
+## START
 
 ### What you need
 
@@ -35,32 +35,56 @@ That's what your constactor need to be
 constructor() {
     super();
     this.state = {
-      loading: true,
-      posts: [],
-      media: [],
-      calendar: [],
-      categories: []
+      data1: [],
+      data2: [],
+      data3: []
     };
 
     Promise.all([
-      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/posts/").then(
-        data => data.json()
+      fetch("[your wordpress api]/wp-json/wp/v2/posts/").then(
+        data1 => data.json()
       ),
-      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/media/").then(
-        media => media.json()
+      fetch("[your wordpress api]/wp-json/wp/v2/media/").then(
+        data2 => media.json()
       ),
-      fetch("https://moholepeople.it/dashboard/wp-json/acf/v3/posts").then(
-        data => data.json()
+      fetch("[your wordpress api]/dashboard/wp-json/acf/v3/posts").then(
+        data3 => data.json()
       )
-    ]).then(([posts, media, calendar, categories]) => {
+    ]).then(([data1, data2, data3]) => {
       this.setState({
-        posts,
-        media,
-        calendar,
-        categories,
-        loading: false
+        data1,
+        data2,
+        data3
       });
       console.log(this.state);
     });
+  }
+```
+
+what you component need to be
+
+```js
+
+  render() {
+    return (
+      <div className="card" key={this.props.k}>
+        <div class="card-count-container">
+          <img src={this.props.img} alt={this.props.altImg} />
+          <div class="card-count"
+            dangerouslySetInnerHTML={{
+              __html: this.props.calendar
+            }}
+          />
+        </div>
+        <div className="card-content">
+          <h3>{this.props.title}</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.props.excerpt
+            }}
+          />
+        </div>
+      </div>
+    );
   }
 ```
