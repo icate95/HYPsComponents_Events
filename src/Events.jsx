@@ -1,9 +1,4 @@
 import React from "react";
-// import Header from "./../components/Header";
-// import "./Eventi.css";
-
-// import Loader from "./../components/Loader";
-// import img_sostitutiva from "./../icone/mohole.jpg";
 
 class Card extends React.Component {
   constructor() {
@@ -44,10 +39,10 @@ class Eventi extends React.Component {
     };
 
     Promise.all([
-      fetch("http://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/posts/").then(
+      fetch("https://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/posts/").then(
         data => data.json()
       ),
-      fetch("http://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/media/").then(
+      fetch("https://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/media/").then(
         media => media.json()
       )
     ]).then(([posts, media]) => {
@@ -83,7 +78,6 @@ class Eventi extends React.Component {
     return (
       <div className="content">
         {this.state.loading ? <p>Caricamento</p> : ""}
-        {/* <Header  titoloPagina='Eventi'/> */}
         <div class="card-container">{cards}</div>
       </div>
     );
