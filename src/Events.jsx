@@ -39,10 +39,10 @@ class Eventi extends React.Component {
     };
 
     Promise.all([
-      fetch("https://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/posts/").then(
+      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/posts/").then(
         data => data.json()
       ),
-      fetch("https://sito-demo-api.ianesellicaterina.me/wp-json/wp/v2/media/").then(
+      fetch("https://moholepeople.it/dashboard/wp-json/wp/v2/media/").then(
         media => media.json()
       )
     ]).then(([posts, media]) => {
