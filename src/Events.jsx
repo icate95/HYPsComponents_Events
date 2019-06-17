@@ -135,6 +135,8 @@ class Eventi extends React.Component {
     });
     return (
       <div className="content" onScroll={this.scrollCards.bind(this)}>
+        
+        <div className="title-container"> <h1>Mohole's Event Dashboard</h1></div>
         {this.state.loading ? <Loader /> : ""}
         <div className="card-container">{cards}</div>
       </div>
