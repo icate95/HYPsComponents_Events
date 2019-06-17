@@ -5,6 +5,19 @@ import React from "react";
 // import Loader from "./../components/Loader";
 import img_sostitutiva from "./icone/mohole.jpg";
 
+class Loader extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className='caricamento'> 
+        <p>In caricamento</p>
+        </div>
+    )}
+}
+
 class Card extends React.Component {
   constructor() {
     super();
@@ -20,7 +33,6 @@ class Card extends React.Component {
               __html: this.props.calendar
             }}
           />
-          {/* <div class="card-count">{this.props.calendar}</div> */}
         </div>
         <div className="card-content">
           <h3>{this.props.title}</h3>
@@ -123,8 +135,7 @@ class Eventi extends React.Component {
     });
     return (
       <div className="content" onScroll={this.scrollCards.bind(this)}>
-        {/* {this.state.loading ? <Loader /> : ""} */}
-        {/* <Header  titoloPagina='Eventi'/> */}
+        {this.state.loading ? <Loader /> : ""}
         <div className="card-container">{cards}</div>
       </div>
     );
