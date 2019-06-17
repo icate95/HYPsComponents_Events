@@ -88,3 +88,4 @@ what you component need to be
     );
   }
 ```
+[that's an example!](https://hyps-events.netlify.com/)
