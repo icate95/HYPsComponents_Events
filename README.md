@@ -1,69 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HYP's Events Component
 
-## Available Scripts
+**HYP** is the prototype of a web app that aims to improve communication between students and school..
 
-In the project directory, you can run:
+Site's link: [HYP](https://happy-beaver-hyp.netlify.com/) <br/>
+Repository's link: [GitHub-Hyp](https://github.com/icate95/HYP2)
 
-### `npm start`
+In this documentation I will illustrate the realization of the **events page** .
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## USED TECHNOLOGY
 
-### `npm test`
+For the development of this project it was decided to use **[REACT](https://reactjs.org/)** for the frontend part and **[STRAPI](https://strapi.io/documentation/3.0.0-beta.x/)** for the backend part.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the Events page we get the API from the dashboard in the school hall. 
+The dasboard is build in WordPress. All we needed is to build the request to the [REST API](https://developer.wordpress.org/rest-api/).
+#
 
-### `npm run build`
+## START 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What you need
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- a React project
+- a WordPress website
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Find your WordPress API
 
-### `npm run eject`
+You can find your JSON adding `wp-json/wp/v2/posts/` at your website' URL
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Once you have downloaded this Git, insert the **Login.jsx** and **Login.scss** files into the React folder inside src and then overwrite the **index.js** file.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![folder](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/folder.png)
 
-## Learn More
+To make sure that everything works we still need to make **two changes**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Enter the ** Strapi ** backend and enter **Roles and Permission**> **Authenticated**> scroll the page, open the **Users Permission** curtain and enter the following fields in the Auth field.<br/>
+  ![role](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/role.png)<br/> > ![Auth](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/authenticated.png) > ![User](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/userPermission.png) and checked the field ![Check](https://github.com/lomba1992/loginWithStrapi/blob/master/schermata/check.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* As a second step you need to replace the url with that of your database created in strapi (with ctrl + F look for the following word '[InsertUrlStrapi]').
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**Once all these steps are done, everything will be ready. (Inside the file you will find comments explaining the functions)**
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# HYPsComponents_Events
+#### ENJOY YOURSELF!!!
