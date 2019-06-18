@@ -5,10 +5,7 @@
 Site's link: [HYP](https://happy-beaver-hyp.netlify.com/) <br/>
 Repository's link: [GitHub-Hyp](https://github.com/icate95/HYP2)
 
-
-Focus on the Component: [HYP](https://hyps-events.netlify.com/) <br/>
-
-In this documentation I will illustrate the realization of the **events page** .
+In this documentation I will illustrate the realization of the **events page**.
 
 #
 
@@ -39,18 +36,44 @@ constructor() {
     super();
     this.state = {
       data1: [],
+      data2: []
+    };
+
+    Promise.all([
+      fetch("[your wordpress site]/wp-json/wp/v2/posts/").then(
+        data1 => data.json()
+      ),
+      fetch("[your wordpress site]/wp-json/wp/v2/media/").then(
+        data2 => media.json()
+      )
+    ]).then(([data1, data2]) => {
+      this.setState({
+        data1,
+        data2
+      });
+      console.log(this.state);
+    });
+  }
+```
+if your site use the Advanced Custom Field Plugin 
+
+```js
+constructor() {
+    super();
+    this.state = {
+      data1: [],
       data2: [],
       data3: []
     };
 
     Promise.all([
-      fetch("[your wordpress api]/wp-json/wp/v2/posts/").then(
+      fetch("[your wordpress site]/wp-json/wp/v2/posts/").then(
         data1 => data.json()
       ),
-      fetch("[your wordpress api]/wp-json/wp/v2/media/").then(
+      fetch("[your wordpress site]/wp-json/wp/v2/media/").then(
         data2 => media.json()
       ),
-      fetch("[your wordpress api]/dashboard/wp-json/acf/v3/posts").then(
+      fetch("[your wordpress site]/dashboard/wp-json/acf/v3/posts").then(
         data3 => data.json()
       )
     ]).then(([data1, data2, data3]) => {
@@ -63,7 +86,6 @@ constructor() {
     });
   }
 ```
-
 what you component need to be
 
 ```js
