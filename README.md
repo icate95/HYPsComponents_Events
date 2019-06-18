@@ -5,6 +5,9 @@
 Site's link: [HYP](https://happy-beaver-hyp.netlify.com/) <br/>
 Repository's link: [GitHub-Hyp](https://github.com/icate95/HYP2)
 
+
+Focus on the Component: [HYP](https://hyps-events.netlify.com/) <br/>
+
 In this documentation I will illustrate the realization of the **events page** .
 
 #
