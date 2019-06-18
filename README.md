@@ -114,3 +114,4 @@ what you component need to be
   }
 ```
 [that's an example!](https://hyps-events.netlify.com/)
+Style from [Responsive, Animated Infographic Card using Flexbox](https://codepen.io/prasad-d/pen/dEeYea?editors=1000)
